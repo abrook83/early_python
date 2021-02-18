@@ -42,7 +42,7 @@ class Car:
 
     def __init__(self, make, model, year):
         """ initialise attributes to describe the car """
-        self.make = make
+        self.make = make            # the object (self)'s attribute (make) becomes the argument "make".
         self.model = model
         self.year = year
         self.odometer_reading = 0
@@ -56,9 +56,29 @@ class Car:
         """ print a statement showing the cars mileage """
         print(f"This car has travelled {self.odometer_reading} miles.... highway miles though, they're the good ones")
 
+    def update_odometer(self, mileage):
+        """ update mew milage to the odometer reading """
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage         # creates an attribute 'mileage' to be input into 'self.odometer_reading()' when called
+        else:
+            print("Ferris! The miles aren't comin' off!")
 
-my_new_car = Car('audi','a4','2019')
-print(my_new_car.get_descriptive_name())
-my_new_car.odometer_reading = 23
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+                                    # defining the child class
+class ElectricCar(Car):             # the parent class 'Car' must be part of the current file, and above the child class ^^
+    """ represents aspects of a car, specific to electric cars """
+    
+    def __init__(self, make, model, year):
+        """ Initiatlise attributes of the parent class """
+        super().__init__(make, model, year)         # 'super' function allows you to call a method from a parent class...
+                                                    # ...and gives all the attributes from that method.
+        self.battery_size = 75
 
-my_new_car.read_odometer()
+    def describe_battery(self):             # created in the child class, will not be reflected in the parent class 'Car'
+        """ print a statement giving the battery size """
+        print(f"Battery size: {self.battery_size}kWh.")
+
+my_tesla = ElectricCar('tesla','model s','2019')            
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
