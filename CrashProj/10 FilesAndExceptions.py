@@ -1,3 +1,3 @@
-with open ('pi_digits.txt') as file_object:
-    contents = file_object.read()
-print(contents)
+with open ('CrashProj/pi_digits.txt') as file_object:         # 'with open' opens the file to perform the function...
+    contents = file_object.read()                             # ...then closes the file as the code block completes.
+print(contents.strip())
