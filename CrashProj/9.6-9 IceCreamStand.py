@@ -87,7 +87,13 @@ class Admin(User):
     def __init__(self, first_name, last_name, age, middle_name, email_addr, username):
         """ initialise the admin """
         super().__init__(first_name, last_name, age, middle_name, email_addr, username)
-        self.privileges = []
+        self.privileges = []            # adds the attribute 'privileges as an empty list
+
+    def show_privileges(self):
+        """ display the list of privileges available to admin """
+        print("\nThe following privileges are available to admin users:")
+        for priv in self.privileges:
+            print(f"\t- {priv}")
 
 
 # dave = User('Dave','Johnson','32','George','dave@gmail.com','dgj32')
@@ -97,3 +103,13 @@ class Admin(User):
 # glen = User('glen','davies','56','michael','glen32@hotmail.com','glenneth23')
 # User.describe_user(glen)
 # User.greet_user(glen)
+
+admin = Admin('wendy','jones','63','elizabeth','librarian@school.com','admin123',)
+Admin.describe_user(admin)
+
+admin.privileges = [
+    'reset passwords',
+    'deduct from your pay when your books are overdue',
+    'see your entire academic history!',
+]
+Admin.show_privileges(admin)
