@@ -65,6 +65,7 @@ class Car:
 
     def increment_odometer(self, miles):
         self.odometer_reading += miles
+
                                     # defining the child class
 class ElectricCar(Car):             # the parent class 'Car' must be part of the current file, and above the child class ^^
     """ represents aspects of a car, specific to electric cars """
@@ -73,7 +74,7 @@ class ElectricCar(Car):             # the parent class 'Car' must be part of the
         """ Initiatlise attributes of the parent class """
         super().__init__(make, model, year)         # 'super' function allows you to call a method from a parent class...
                                                     # ...and gives all the attributes from that method.
-        self.battery_size = 75
+        self.battery_size = 75                      # then adds another argument to the subclass
 
     def describe_battery(self):             # created in the child class, will not be reflected in the parent class 'Car'
         """ print a statement giving the battery size """
