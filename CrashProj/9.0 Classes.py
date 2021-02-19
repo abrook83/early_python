@@ -69,9 +69,8 @@ class Car:
                                     # defining the child class
 class ElectricCar(Car):             # the parent class 'Car' must be part of the current file, and above the child class ^^
     """ represents aspects of a car, specific to electric cars """
-    
-    def __init__(self, make, model, year):
-        """ Initiatlise attributes of the parent class """
+        def __init__(self, make, model, year):
+        """ Initialise attributes of the parent class """
         super().__init__(make, model, year)         # 'super' function allows you to call a method from a parent class...
                                                     # ...and gives all the attributes from that method.
         self.battery_size = 75                      # then adds another argument to the subclass
