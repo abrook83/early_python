@@ -1,0 +1,3 @@
+Programming is fun!.... So far.
+Let's see where this text ends up shall we?
+Now let's 'append' to add another line!
