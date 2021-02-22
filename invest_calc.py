@@ -1,14 +1,15 @@
 capit = input("Enter starting amount: ")
 fcap = float(capit)
 
-intr = input("Enter interest rate: ")
+intr = input("Enter interest rate in percentage: ")
 fint = float(intr)/100
 
 years = input("Term: ")
 yrs = float(years)
-print(f"Starting amount: {fcap}")
-print(f"Interest rate: {fint}")
-print(f"Years invested: {yrs}")
+
+print(f"\nStarting amount: ${capit}")
+print(f"Interest rate: {intr}%")
+print(f"Years invested: {int(yrs)}")
 
 count = 1
 while count <= yrs:
