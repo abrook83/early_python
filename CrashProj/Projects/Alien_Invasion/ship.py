@@ -1,9 +1,12 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship:
+class Ship(Sprite):
     """ a class to manage the ship """
 
     def __init__(self, ai_game):        # references to itself and the current instance of the 'AlienInvasion Class'.
+        """ initialise the ship and set its starting position """
+        super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()     # allows us to place the ship in its current location
@@ -37,3 +40,7 @@ class Ship:
         """ draw the ship at its current location """
         self.screen.blit(self.image, self.rect)
 
+    def center_ship(self):
+        """ center the ship on the screen """
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
