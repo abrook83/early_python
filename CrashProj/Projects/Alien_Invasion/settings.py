@@ -24,7 +24,7 @@ class Settings:
         self.fleet_drop_speed = 10
         
         # how quickly the game speeds up
-        self.speedup_scale = 2.0
+        self.speedup_scale = 1.1
 
         # how quickly the alien points icreases
         self.score_scale = 1.5
