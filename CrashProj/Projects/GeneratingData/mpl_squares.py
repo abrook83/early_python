@@ -6,7 +6,7 @@ y_values = [x**3 for x in x_values]
 
 print(max(y_values))
 
-plt.style.use('seaborn')
+plt.style.use('seaborn-poster')
 fig, ax = plt.subplots()
 ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Reds, s=10)
 
