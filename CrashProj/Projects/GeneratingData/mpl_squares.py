@@ -18,7 +18,9 @@ ax.set_ylabel("Square of Value", fontsize = 14)
 # set the size of tick labels
 ax.tick_params(axis = 'both', labelsize = 14)
 
-# set the tange for each axis
-ax.axis([0, 5500, 0, 130000000000])
+# set the range for each axis
+x_range = float(max(x_values) * 1.1)
+y_range = float(max(y_values) * 1.1)
+ax.axis([0, x_range, 0, y_range])
 
 plt.show()      # opens the view and displays the plot
