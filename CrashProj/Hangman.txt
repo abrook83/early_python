@@ -1,0 +1,12 @@
+While loop when word not completed or no. of guesses exceeded.
+First enter a word by player 1 to be guessed.
+Hide the word that is entered.
+Lower case the word.
+Create a dictionary to assign a place to each letter.
+Print how many letters are in the word.
+Display empty guess template....
+Take an input from player 2 as a guessed letter.
+Lower case each letter to be checked against those in the dicitonary.
+Create a try statement to eliminate incorrect letters.
+If statement to loop through dicitonary to check if value exists.
+    if value exists, print 'well done' and display.
