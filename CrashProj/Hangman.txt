@@ -1,13 +1,13 @@
 While loop when word not completed or no. of guesses exceeded.
 First enter a word by player 1 to be guessed.
-Hide the word that is entered.
+# Hide the word that is entered.
 Lower case the word.
 Create a dictionary to assign a place to each letter.
 Print how many letters are in the word.
 Display empty guess template....
 Take an input from player 2 as a guessed letter.
 
-If letter not in range [a:z], or len > 1, or already in the list of guesses:... then ask again...
+If letter not in range [a:z](possible?? 'isalph'??), or len > 1, or already in the list of guesses:... then ask again...
 Lower case each letter to be checked against those in the dicitonary.
 Create a try statement to eliminate incorrect letters.
 
