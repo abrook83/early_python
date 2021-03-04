@@ -49,8 +49,8 @@ with open(filename1) as f1:
     # plot the high & low temps
     plt.style.use('seaborn')
     fig, ax = plt.subplots()
-    ax.plot(dates, exp_lvls, c='red', alpha=0.5)     # plot the highs, in red
-    ax.plot(dates1, rainfalls, c='blue', alpha=0.5)     # plot the lows, in blue
+    ax.plot(dates, exp_lvls, c='red')     # plot the highs, in red
+    ax.plot(dates1, rainfalls, c='blue')     # plot the lows, in blue
     # ax.fill_between(dates, exp_lvls, rainfalls, facecolor='blue', alpha=0.1)    # alpha controls a colour's transparency
 
     # format the plot
