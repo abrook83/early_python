@@ -4,21 +4,27 @@ from logging import currentframe
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-filename = 'CrashProj\Projects\data/the_csv_file_format\data\sitka_weather_2018_simple.csv'
+filename = 'CrashProj\Projects\data/the_csv_file_format\data\death_valley_2018_simple.csv'
 with open(filename) as f:
-    reader = csv.reader(f)          # the csv's reader function, passed the opened file (f)
-    header_row = next(reader)       # 'next' function returns the next file in the line (first in this case)
-    # print(header_row)
-    
+    reader = csv.reader(f)
+    header_row = next(reader)
+
+    # for index, column_header in enumerate(header_row):
+    #     print(index, column_header)
+
     # retrieve the dates and high temps from the file
     dates, highs, lows = [], [], []      # empty list of highs and dates
     for row in reader:      # for each row in the opened & read file...
         current_date = datetime.strptime(row[2], '%Y-%m-%d')        # date from row 2
-        high = int(row[5])  # ...take the 5th column as an integer
-        low = int(row[6])
-        dates.append(current_date)
-        highs.append(high)  # add it to the list of highs
-        lows.append(low)
+        try:
+            high = int(row[4])  # ...take the 4th column as an integer
+            low = int(row[5])
+        except ValueError:
+            print(f"Missing data for {current_date}")
+        else:
+            dates.append(current_date)
+            highs.append(high)  # add it to the list of highs
+            lows.append(low)
 
     # plot the high & low temps
     plt.style.use('seaborn')
@@ -28,7 +34,7 @@ with open(filename) as f:
     ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)    # alpha controls a colour's transparency
 
     # format the plot
-    ax.set_title("Daily high & Low Temps 2018", fontsize=24)
+    ax.set_title("Daily high & Low Temps 2018\nDeath Valley, CA", fontsize=20)
     ax.set_xlabel('', fontsize=16)
     fig.autofmt_xdate()     # draws dates diagonally to prevent overlap
     ax.set_ylabel("Temperature (F)", fontsize=16)
