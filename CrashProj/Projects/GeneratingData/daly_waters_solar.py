@@ -57,7 +57,7 @@ with open(filename1) as f1:
     ax.set_title("Daily Solar Exposure Levels\nDaly Waters, 2020", fontsize=20)
     ax.set_xlabel("Date", fontsize=16)
     fig.autofmt_xdate()     # draws dates diagonally to prevent overlap
-    ax.set_ylabel("Daily Exposure Level (MJ/m*m)\nAgainst Rainfall (mm)", fontsize=16)
+    ax.set_ylabel("Daily Exposure Level (MJ/m(sq.))\nAgainst Rainfall (mm)", fontsize=16)
     ax.tick_params(axis='both', which='major', labelsize=16)
 
     plt.show()
