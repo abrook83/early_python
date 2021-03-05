@@ -4,7 +4,8 @@ from plotly.graph_objs import Scattergeo, Layout    # 'Scattergeo' chart type
 from plotly import offline      # 'offline' moduule to render the map
 
 # explore the structure of the data
-filename = 'CrashProj\Projects\data\mapping_global_data_sets\data\eq_data_1_day_m1.json'
+filename = 'CrashProj\Projects\data\mapping_global_data_sets\data\eq_data_30_day_m1.json'
+
 with open(filename) as f:   # open and refer to as 'f'
     all_eq_data = json.load(f)     # converts the data into a python-usable format (in this case a dictionary)
 
@@ -23,8 +24,22 @@ print(mags[:10])        # print the first 10
 print(lons[:5])
 print(lats[:5])
 
-# map the earthquakes
-data = [Scattergeo(lon=lons, lat=lats)]     # create Scattergeo object and feed lats & longs lists...
+# map the earthquakes (two different ways):
+# data = [Scattergeo(lon=lons, lat=lats)]     # create Scattergeo object and feed lats & longs lists...
+
+data = [{                                     # alternate method for the above
+    'type': 'scattergeo',
+    'lon': lons,
+    'lat': lats,
+    'marker': {             # specify the parameters for each marker
+        'size': [5*mag for mag in mags],        # creates loc markers dependent on quake magnitude
+        'color': mags,      # data to use to scale color against
+        'colorscale': 'Viridis',    # colour range
+        'reversescale': True,       # sets light colour for lightest magnitude....
+        'colorbar': {'title': 'Magnitude'}      # generate a scale colourbar, with title 'Magnitude'
+    }
+}]
+
 my_layout = Layout(title='Global Earthquakes')  # feed info to 'Layout' for title etc.
 
 fig = {'data': data, 'layout': my_layout}       # dictionary contains the data to be fed to the plot
