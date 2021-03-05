@@ -1,7 +1,7 @@
 import json     # import json module
 
-from plotly.graph_objs import Scattergeo, Layout
-from plotly import offline
+from plotly.graph_objs import Scattergeo, Layout    # 'Scattergeo' chart type
+from plotly import offline      # 'offline' moduule to render the map
 
 # explore the structure of the data
 filename = 'CrashProj\Projects\data\mapping_global_data_sets\data\eq_data_1_day_m1.json'
@@ -24,10 +24,10 @@ print(lons[:5])
 print(lats[:5])
 
 # map the earthquakes
-data = [Scattergeo(lon=lons, lat=lats)]
-my_layout = Layout(title='Global Earthquakes')
+data = [Scattergeo(lon=lons, lat=lats)]     # create Scattergeo object and feed lats & longs lists...
+my_layout = Layout(title='Global Earthquakes')  # feed info to 'Layout' for title etc.
 
-fig = {'data': data, 'layout': my_layout}
+fig = {'data': data, 'layout': my_layout}       # dictionary contains the data to be fed to the plot
 offline.plot(fig, filename='global_earthquakes.html')
 
 readable_file = 'CrashProj\Projects\data/readable_eq_data.json'    # create a readable file to dump the data into
