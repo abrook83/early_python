@@ -13,14 +13,14 @@ all_eq_dicts = all_eq_data['features']      # take 'features' data from the file
 
 mags, lons, lats, hover_texts = [], [], [], []       # empty list of magnitudes, lons, lats....
 for eq_dict in all_eq_dicts:        # for all the entries in 'all_eq_dicts'...
-    mag = eq_dict['properties']['mag']      # the variable 'mag' is under 'properties', 'mag'
-    lon = eq_dict['geometry']['coordinates'][0]     # under 'geometry', 'coords', first entry
-    lat = eq_dict['geometry']['coordinates'][1]
-    title = eq_dict['properties']['title']
-    mags.append(mag)        # add the value to the list of 'mags'
-    lons.append(lon)
-    lats.append(lat)
-    hover_texts.append(title)        
+    # mag = eq_dict['properties']['mag']      # the variable 'mag' is under 'properties', 'mag'
+    # lon = eq_dict['geometry']['coordinates'][0]     # under 'geometry', 'coords', first entry
+    # lat = eq_dict['geometry']['coordinates'][1]
+    # title = eq_dict['properties']['title']
+    mags.append(eq_dict['properties']['mag'])        # add the value to the list of 'mags'
+    lons.append(eq_dict['geometry']['coordinates'][0])
+    lats.append(eq_dict['geometry']['coordinates'][1])
+    hover_texts.append(eq_dict['properties']['title'])        
 
 print(mags[:10])        # print the first 10
 print(lons[:5])
@@ -43,7 +43,8 @@ data = [{                                     # alternate method for the above
     }
 }]
 
-my_layout = Layout(title='Global Earthquakes')  # feed info to 'Layout' for title etc.
+image_title = all_eq_data['metadata']['title']      # pulls the title data from the json file
+my_layout = Layout(title=image_title)  # feed 'image_title' to 'Layout' for title etc.
 
 fig = {'data': data, 'layout': my_layout}       # dictionary contains the data to be fed to the plot
 offline.plot(fig, filename='global_earthquakes.html')
