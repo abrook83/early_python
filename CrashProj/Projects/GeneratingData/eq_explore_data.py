@@ -34,7 +34,7 @@ data = [{                                     # alternate method for the above
     'marker': {             # specify the parameters for each marker
         'size': [5*mag for mag in mags],        # creates loc markers dependent on quake magnitude
         'color': mags,      # data to use to scale color against
-        'colorscale': 'Viridis',    # colour range
+        'colorscale': 'Electric',    # colour range
         'reversescale': True,       # sets light colour for lightest magnitude....
         'colorbar': {'title': 'Magnitude'}      # generate a scale colourbar, with title 'Magnitude'
     }
