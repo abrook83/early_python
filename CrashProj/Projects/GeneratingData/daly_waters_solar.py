@@ -17,7 +17,7 @@ with open(filename) as f:
     for row in reader:      # for each row in the opened & read file...
         current_date = datetime.strptime((f"{row[2]}-{row[4]}-{row[3]}"), '%Y-%d-%m')   # date from row 4, 3
         try:
-            exp = float(row[5])  # ...take the 5th column as an integer
+            exp = float(row[5])  # ...take the 5th column as an float
         except ValueError:
             print(f"Missing data for {current_date}")
         else:
