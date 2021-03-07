@@ -1,0 +1,36 @@
+import csv
+from logging import currentframe
+
+from plotly.graph_objs import Scattergeo, Layout
+from plotly import offline
+from datetime import datetime
+
+filename = 'CrashProj\Projects\data\FireData_NASA_MODIS_C6_Global_7d.csv'
+
+with open(filename) as f:
+    reader = csv.reader(f)         # pass the open doc into the reader
+    header_row = next(reader)       # access the first row
+
+    for index, column_header in enumerate(header_row):      # enumerate gives each list item a number
+        print(index, column_header)
+
+# retrieve data from the file
+    lats, lons, brightnesses, dates, = [], [], [], []      # empty lists of location & data
+    for row in reader:      # for each row in the opened & read file...
+        current_date = datetime.strptime(row[5], '%Y-%m-%d')   # date from row 5
+        dates.append(current_date)
+        lats.append(float(row[0]))
+        lons.append(float(row[1]))
+        brightnesses.append(float(row[2]))
+
+        # try:
+        #     exp = float(row[5])  # ...take the 5th column as an float
+        # except ValueError:
+        #     print(f"Missing data for {current_date}")
+        # else:
+        #     dates.append(current_date)
+        #     exp_lvls.append(exp)  # add it to the list of highs
+
+
+
+
