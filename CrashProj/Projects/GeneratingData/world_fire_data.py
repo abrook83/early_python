@@ -5,7 +5,7 @@ from plotly.graph_objs import Scattergeo, Layout
 from plotly import offline
 from datetime import datetime
 
-filename = 'CrashProj\Projects\data\FireData_NASA_MODIS_C6_Global_7d.csv'
+filename = 'CrashProj\Projects\data\FireData_MODIS_C6_Australia_NewZealand_48h.csv'
 
 with open(filename) as f:
     reader = csv.reader(f)         # pass the open doc into the reader
@@ -28,7 +28,7 @@ fire_data = [{
     'lon': lons,
     'lat': lats,
     'marker': {
-        'size': [0.01*bright for bright in brightnesses],
+        'size': [0.05*bright for bright in brightnesses],
         'color': brightnesses,
         'colorscale': 'Electric',
         'reversescale': True,
