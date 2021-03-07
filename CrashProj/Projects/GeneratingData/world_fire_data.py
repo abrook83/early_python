@@ -23,6 +23,24 @@ with open(filename) as f:
         lons.append(float(row[1]))
         brightnesses.append(float(row[2]))
 
+fire_data = [{
+    'type': 'scattergeo',
+    'lon': lons,
+    'lat': lats,
+    'marker': {
+        'size': [0.01*bright for bright in brightnesses],
+        'color': brightnesses,
+        'colorscale': 'Electric',
+        'reversescale': True,
+        'colorbar': {'title': 'Fire Brightness'},
+    },
+}]
+
+my_layout = Layout(title='Global Fires')
+
+fig = {'data': fire_data, 'layout': my_layout}
+offline.plot(fig, filename='global_fires.html')
+
         # try:
         #     exp = float(row[5])  # ...take the 5th column as an float
         # except ValueError:
