@@ -5,7 +5,7 @@ from plotly.graph_objs import Scattergeo, Layout
 from plotly import offline
 from datetime import datetime
 
-filename = 'CrashProj\Projects\data\FireData_MODIS_C6_Australia_NewZealand_48h.csv'
+filename = 'Python Crash Course Works\Projects\Datasets\FireData_MODIS_C6_Australia_NewZealand_48h.csv'
 
 with open(filename) as f:
     reader = csv.reader(f)         # pass the open doc into the reader
