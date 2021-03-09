@@ -6,7 +6,7 @@ from plotly.graph_objs import bar
 from plotly import offline      # import Bar class and offline modules from plotly
 
 # make an API call and store the response
-url = 'https://api.github.com/search/repositories?q=language:javascript&sort=stars'     # store the API's url & give it a variable
+url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'     # provide the API's url & give it a variable
 headers = {'Accept': 'application/vnd.github.v3+json'}      # request third version of the API
 r = requests.get(url, headers=headers)      # use requests to make the call to the API, giving it the url & header we've defined
 
@@ -45,7 +45,7 @@ data = [{
 }]
 
 my_layout = {           # stipulate the layout
-    'title': 'Most Starred Javascript Projects on GitHub',
+    'title': 'Most Starred Python Projects on GitHub',
     'titlefont': {'size': 28},
     'xaxis': {
         'title': 'Repository',
