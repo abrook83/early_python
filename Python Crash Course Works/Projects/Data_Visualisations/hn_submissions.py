@@ -2,6 +2,9 @@ from operator import itemgetter
 
 import requests
 
+from plotly.graph_objs import bar
+from plotly import offline      # import Bar class and offline modules from plotly
+
 # make an API call and store the response
 url = 'https://hacker-news.firebaseio.com/v0/topstories.json'
 r = requests.get(url)           # call the API and print status of the response
