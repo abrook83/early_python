@@ -1,5 +1,6 @@
-N, M = map(int, input('Enter dimensions: ').split())    # Reads two numbers from input and typecasts them to int using  
-                                    # the map function 
+N = int(input('Enter width dimension: '))
+M = 3 * N
+
 patt = '.|.'
 for i in range(1,N,2):      # every second number in the range
     patts = i * patt
