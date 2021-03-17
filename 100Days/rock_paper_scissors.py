@@ -1,3 +1,6 @@
+# creating rock/paper/scissors, got a little creative with examples from the 100 Days of Code Udemy course.
+# importing rock, paper and scissor basic visuals from the rps_visuals.py file.
+
 import random
 import rps_visuals
 
