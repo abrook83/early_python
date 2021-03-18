@@ -38,9 +38,9 @@ while computer_win_count < 2 or player_win_count < 2:
     else:
       print(f"\nComputer chose: {scissors}")
 
-    # determine the winner, could shorten this with better reasoning
+    # determine the winner, could shorten this with better math reasoning
     if p1_turn == pc_turn:
-      print("Tied round")
+      print("It's a tie!!")
     elif p1_turn == 1 and pc_turn == 3:
       print (f"You win this round {p1_name.title()}!")
       player_win_count +=1
@@ -56,9 +56,9 @@ while computer_win_count < 2 or player_win_count < 2:
 
   # determine best of 3 winner
   if computer_win_count == 2:
-    print("\nComputer takes the trophy!!" *4)
+    print("\nComputer wins! Better luck next time..." *4)
     print("\n")
   elif player_win_count == 2:
-    print("\nPlayer takes home the gold!!" *4)
+    print("\nWinner winner, chicken dinner!!" *4)
     print("\n")
   
