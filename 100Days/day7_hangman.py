@@ -71,6 +71,8 @@ for char in p1_word:
     letters.append(char)
     guess_list += "_"
 
+### overthought, reverted to saved....
+
 # for char in guess_list:
 #     print(char)
 
