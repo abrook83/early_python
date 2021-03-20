@@ -60,6 +60,7 @@ p1_word = input("Player 1 enter your word:\n").lower()
 
 letters = []
 guess_list = []
+end_of_game = False
 
 print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
@@ -77,15 +78,19 @@ for char in p1_word:
 #     print(char)
 
 print(guess_list)
-wrong_count = 0
+lives_left = len(stages)
 
-while wrong_count < len(stages):
+while not end_of_game:
     p2_guess = input("Enter a letter to guess:\n").lower()
     if p2_guess not in letters:
       print(f"\nNope, try another!\n\n{guess_list}")
-      wrong_count +=1
-      print(stages[wrong_count])
-      continue
+      lives_left -=1
+      # print(stages[wrong_count])
+      if lives_left == 0:
+        print("\nStop it! He's dead already!!\n")
+        end_of_game = True
+      else:
+        continue
     else:
       for pos in range(len(letters)):
           letter = p1_word[pos]
@@ -93,6 +98,6 @@ while wrong_count < len(stages):
               guess_list[pos] = letter
       print(f"\nYup, it's in there!\n\n{guess_list}")
       if letters == guess_list:
+          print("\nWell done!\n")
+          end_of_game = True
           break
-
-print("Well done!")
