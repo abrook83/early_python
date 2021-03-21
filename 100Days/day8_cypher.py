@@ -8,22 +8,28 @@ shift = int(input("Type the shift number:\n"))
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
 def encrypt(plain_text, shift_amt):
-    encoded = ''
-    for i in plain_text:              # for every letter in the text 
-        pos = alphabet.index(i)
-        new_pos = pos + shift_amt
-        encoded += alphabet[new_pos]
-    print(f"Encoded text: '{encoded}' ;)")
+    result = ''
+    if direction == 'e':
+        for i in plain_text:              # for every letter in the text 
+            pos = alphabet.index(i)
+            new_pos = pos + shift_amt
+            result += alphabet[new_pos]
+        print(f"New text: '{result}' ;)")
+    elif direction == 'd':
+        for i in plain_text:              # for every letter in the text 
+            pos = alphabet.index(i)
+            new_pos = pos - shift_amt
+            result += alphabet[new_pos]
+        print(f"New text: '{result}' ;)")
+    
 
-def decrypt(encoded_text, shift_amt):
-    decoded = ''
-    for i in encoded_text:
-        pos = alphabet.index(i)
-        new_pos = pos - shift_amt
-        decoded += alphabet[new_pos]
-    print(f"Decoded text: '{decoded}'")
+encrypt(plain_text=text, shift_amt=shift)
 
-if direction == 'e':
-    encrypt(plain_text=text, shift_amt=shift)
-elif direction == 'd':
-    decrypt(encoded_text=text, shift_amt=shift)
+# def decrypt(encoded_text, shift_amt):
+#     decoded = ''
+#     for i in encoded_text:
+#         pos = alphabet.index(i)
+#         new_pos = pos - shift_amt
+#         decoded += alphabet[new_pos]
+#     print(f"Decoded text: '{decoded}'")
+
