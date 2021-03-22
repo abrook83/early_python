@@ -22,3 +22,21 @@ print(programming_dictionary)
 for thing in programming_dictionary:
     print(f"{thing}:")
     print(programming_dictionary[thing])
+
+# nesting
+travel_log = {
+    "Germany": {"cities_visited": ["Berlin","Hamburg","Mannheim","Munich"], "total_visits": 5},
+    "Netherlands": {"cities_visited": ["Amsterdam","Haarlem","Rotterdam","Eindhoven"], "total_visits": 4},
+}
+
+travel_list = [
+    {
+        "country": "Germany", 
+        "cities_visited": ["Berlin","Hamburg","Mannheim","Munich"], 
+        "total_visits": 5
+    },
+    {
+        "country": "Netherlands", 
+        "cities_visited": ["Amsterdam","Haarlem","Rotterdam","Eindhoven"], 
+        "total_visits": 4},
+]
