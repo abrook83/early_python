@@ -1,5 +1,3 @@
-#HINT: You can call clear() to clear the output in the console.
-
 from day9_art import logo, clear_screen
 print(logo)
 
