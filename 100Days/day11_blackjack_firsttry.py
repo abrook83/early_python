@@ -39,6 +39,8 @@ for card in range(2):
         game_on = False
 
 
+
+
 print(f"Your cards: {player_cards}")
 print(f"Your score: {player_score}")
 print(f"Dealer's first card: {dealer_cards}")
