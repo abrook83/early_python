@@ -16,7 +16,7 @@ print(logo)
 guesses = 0
 
 def select_difficulty():       
-    """ sets the number of guesses to eith 5 or 10 """
+    """ sets the number of guesses to either 5 or 10 """
     if input("Select difficulty: Easy(e) / Hard(h):\n") == 'h':
         return guesses + 5
     else:
@@ -24,6 +24,7 @@ def select_difficulty():
 
 def play(guesses):
     """ runs the game with the selected difficulty """
+    guesses = select_difficulty()
     rand_num = random.randrange(1,100)
     game_on = True
     print("I'm thinking of a number between 1 & 100, can you guess what it is???")
@@ -35,7 +36,6 @@ def play(guesses):
             guess = int(input("Enter your guess...:\n"))
             if guess == rand_num:
                 print(f"Yeeaaaahhhh, the answer was {rand_num}, You Win!!")
-                # guesses = 0
                 game_on = False
             elif guess > rand_num:
                 print("Too high")
@@ -49,6 +49,4 @@ def play(guesses):
                 continue
 
 if input("Play a game?(y/n):\n") == 'y':
-    guesses = select_difficulty()
     play(guesses)
-
