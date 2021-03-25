@@ -13,36 +13,39 @@ print(logo)
 # If they run out of turns, provide feedback to the player. 
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
-
-
-rand_num = random.randrange(1,100)
+# select the level of difficulty
+level = input("Select difficulty: Easy(e) / Hard(h):\n")
+if level == 'h':
+    guesses = 5
+else:
+    guesses = 10
 
 game_on = True
 
-
-
-while game_on:
-    level = input("Select difficulty: Easy(e) / Hard(h):\n")
-    if level == 'h':
-        guesses = 5
-    else:
-        guesses = 10
-    while guesses > 0:
-        guess = int(input("Guess a number between 1 & 100:\n"))
-        if guesses == 0:
-            game_on = False
-        if guess == rand_num:
-            print(f"The answer was {rand_num}, You Win!!")
-            guesses = 0
-            game_on = False
-        elif guess > rand_num:
-            print("Too high")
-            guesses -=1
-            print(f"You have {guesses} guesses left")
-            continue
-        elif guess < rand_num:
-            print("Too low")
-            guesses -= 1
-            print(f"You have {guesses} guesses left")
-            continue
+def play(guesses):
+    
+    
+    
+    
+    
+    while game_on:
+        rand_num = random.randrange(1,100)     
+        while guesses > 0:
+            guess = int(input("Guess a number between 1 & 100:\n"))
+            if guesses == 0:
+                game_on = False
+            if guess == rand_num:
+                print(f"The answer was {rand_num}, You Win!!")
+                guesses = 0
+                game_on = False
+            elif guess > rand_num:
+                print("Too high")
+                guesses -=1
+                print(f"You have {guesses} guesses left")
+                continue
+            elif guess < rand_num:
+                print("Too low")
+                guesses -= 1
+                print(f"You have {guesses} guesses left")
+                continue
 
