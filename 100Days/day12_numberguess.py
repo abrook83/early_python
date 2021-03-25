@@ -13,26 +13,28 @@ print(logo)
 # If they run out of turns, provide feedback to the player. 
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
-# select the level of difficulty
 guesses = 0
 
-def select_difficulty():
+def select_difficulty():       
+    """ sets the number of guesses to eith 5 or 10 """
     if input("Select difficulty: Easy(e) / Hard(h):\n") == 'h':
         return guesses + 5
     else:
         return guesses + 10
 
 def play(guesses):
+    """ runs the game with the selected difficulty """
     rand_num = random.randrange(1,100)
     game_on = True
+    print("I'm thinking of a number between 1 & 100, can you guess what it is???")
     while game_on:
         if guesses == 0:
             print("You're out of guesses, better luck next time...")
             game_on = False
         else: 
-            guess = int(input("Guess a number between 1 & 100:\n"))
+            guess = int(input("Enter your guess...:\n"))
             if guess == rand_num:
-                print(f"The answer was {rand_num}, You Win!!")
+                print(f"Yeeaaaahhhh, the answer was {rand_num}, You Win!!")
                 # guesses = 0
                 game_on = False
             elif guess > rand_num:
