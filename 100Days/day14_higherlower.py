@@ -13,7 +13,7 @@ comparison = []
 for entry in range(2):
     to_add = random.choice(data)
     comparison.append(to_add)
-print(comparison)
+# print(comparison)
 
 # display both with vs. logo
 
