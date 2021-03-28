@@ -10,9 +10,9 @@ def take_data():
     """ access a random choice list item """
     return random.choice(data)
 
-def disp_data(entry):
+def disp_data(entry):       # enters a random list item (a dictionary)
     """ return an information string of each random selection """
-    name = entry['name']
+    name = entry['name']        # takes the values from each key
     desc = entry['description']
     country = entry['country']
     return f"{name}, a {desc} from {country}"
