@@ -1,3 +1,7 @@
+# overthought this one a bit. My initial workings are below the working code. I tried to take data and put it into new dictionaries,
+# and lists, then compare the lists etc..... In the end I should have just taken information as a variable and sent it through funcitons
+# to get it to work. The working code is from the walked-through example as part of the '100-days' course.
+
 import random
 from day14_higherlowerart import logo, clear, vs
 from day14_gamedata import data
