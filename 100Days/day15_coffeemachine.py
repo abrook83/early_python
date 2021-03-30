@@ -1,21 +1,17 @@
 from day15_menu import MENU, resources
 # print(MENU)
 # print(resources)
-# TODO 1 "What would you like?" - either coffees, report or OFF function. Afterward, show prompt again to await next direction...
 
-def make_coffee(coffee_type):
-    """Makes the desired coffee from the user input"""
+# TODO make coffee, reduct resources from the available in the machine.
+
+def make_coffee(coffee_type, ingredients):
+    """Makes the desired coffee from the user input, deducting the resources from the available"""
     print(f"\nMaking 1 * {coffee_type}\n")
-    water = int(MENU[coffee_type]['ingredients']['water'])
-    resources['water'] -= water
-    coffee = int(MENU[coffee_type]['ingredients']['coffee'])
-    resources['coffee'] -= coffee    
-    if coffee_type == 'espresso':
-        pass
-    else:
-        milk = int(MENU[coffee_type]['ingredients']['milk'])
-        resources['milk'] -= milk
+    for item in ingredients:
+        resources[item] -= ingredients[item]
 
+
+# TODO generate a report when requested
 
 def gen_report():
     """Reports the available resources in the machine"""
@@ -51,13 +47,14 @@ def count_coins():
 
 def paid(paid_amount, price):
     if paid_amount > price:
-        make_coffee()
         # calculate the change....
         return True
     else:
-        print("Sorry, that's no enough...")
+        print("Sorry, that's not enough...")
         return False
 
+
+# TODO 1 "What would you like?" - either coffees, report or OFF function. Afterward, show prompt again to await next direction...
 
 machine_avail = True
 
@@ -76,6 +73,9 @@ while machine_avail:
                 make_coffee(request, drink_type["ingredients"])
 
 
+#### early workings..... ###
+
+
 # if resources['milk'] <= 0:
 #     ingredients_avail = False
 # elif resources['water'] <= 0:
@@ -89,11 +89,6 @@ while machine_avail:
 
 
 
-
-
-
-
-
 # # def check_resources(coffee_price, coins_input):          # generate these variables to enter into the function...
 # #     if coins_input > coffee_price:
 # #         enough = True
@@ -102,6 +97,5 @@ while machine_avail:
 # #         enough = False
 # #         print("Sorry, you haven't put in enough money...")
 
-# # # make coffee, reduct resources from the available in the machine.
 
 
