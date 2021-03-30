@@ -50,7 +50,7 @@ def count_coins():
 
 def paid(paid_amount, price):
     if paid_amount > price:
-        # calculate the change....
+        print(f"Change: ${paid_amount - price}")
         return True
     else:
         print("Sorry, that's not enough...")
@@ -68,13 +68,13 @@ while machine_avail:
         print("Seeya later!")
         machine_avail = False
     elif request == 'report':
-        gen_report()
-    else:
-        drink_type = MENU[request]
-        if check_resources(drink_type["ingredients"]):
-            to_pay = count_coins()
-            if paid(to_pay, drink_type['cost']):
-                make_coffee(request, drink_type["ingredients"])
+        gen_report()        # generate the report of available resources
+    else:               
+        drink_type = MENU[request]      # take the coffee type input, take its ingredients from the MENU, label that as 'drink_type'...
+        if check_resources(drink_type["ingredients"]):      # load the ingredients list into the 'check_resources', return a T or F
+            to_pay = count_coins()                          # get the total amount paid from 'count_coins'
+            if paid(to_pay, drink_type['cost']):            # if paid amount > price...
+                make_coffee(request, drink_type["ingredients"])     # make the coffee
 
 
 #### early workings..... ###
