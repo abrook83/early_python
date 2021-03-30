@@ -1,8 +1,7 @@
 from day15_menu import MENU, resources
-# print(MENU)
-# print(resources)
 
-# TODO make coffee, reduct resources from the available in the machine.
+# TODO make coffee, deduct resources from the available in the machine.
+
 
 def make_coffee(coffee_type, ingredients):
     """Makes the desired coffee from the user input, deducting the resources from the available"""
@@ -13,6 +12,7 @@ def make_coffee(coffee_type, ingredients):
 
 # TODO generate a report when requested
 
+
 def gen_report():
     """Reports the available resources in the machine"""
     print("Resources available:")
@@ -22,6 +22,7 @@ def gen_report():
 
 
 # TODO check for sufficient resources to make a drink, feedback to user if not available
+
 
 def check_resources(ingredients):
     """Checks if the requested ingredient is more than is available"""
@@ -34,6 +35,7 @@ def check_resources(ingredients):
 
 # TODO count coins by the quantity of each coin, calculate the total money input
 
+
 def count_coins():
     """Counts the total of the coins input into the machine"""
     total_in = float(input("How many quarters?: ")) * 0.25
@@ -45,6 +47,7 @@ def count_coins():
 
 # # TODO calculate change... Determine if transaction successful.
 
+
 def paid(paid_amount, price):
     if paid_amount > price:
         # calculate the change....
@@ -55,6 +58,7 @@ def paid(paid_amount, price):
 
 
 # TODO 1 "What would you like?" - either coffees, report or OFF function. Afterward, show prompt again to await next direction...
+
 
 machine_avail = True
 
