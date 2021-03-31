@@ -12,7 +12,7 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()     # allows us to place the ship in its current location
 
         # Load the ship's image and get its rectangle
-        self.image = pygame.image.load('CrashProj/Projects/Alien_Invasion/freeship.bmp')     # load the image of the ship
+        self.image = pygame.image.load('Python Crash Course Works\Projects\Alien_Invasion/freeship.bmp')     # load the image of the ship
         self.rect = self.image.get_rect()           # give the image the ship's location
 
         # start each new ship at the bottom center of the screen
