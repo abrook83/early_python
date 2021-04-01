@@ -7,8 +7,8 @@ question_bank = []
 
 for question in question_data:
     """for each item in the 'question_data' list..."""
-    question_text = question['text']
-    answer_text = question['answer']
+    question_text = question['question']
+    answer_text = question['correct_answer']
     """assign both the q's and a's from each dictionary to the variables above"""
     new_question = Question(question_text, answer_text)
     """compile both into a new q/a combination"""
