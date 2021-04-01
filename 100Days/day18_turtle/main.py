@@ -59,7 +59,7 @@ random_walk(200)
 
 
 def spirograph():
-    
+    pass
 
 # screen = Screen()
 # screen.exitonclick()
