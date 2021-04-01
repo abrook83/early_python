@@ -5,6 +5,7 @@ class User:
         parameter we need to make the instance."""
         self.user_id = user_id
         """Set the instance's attributes by passing the input parameter to the new instance 'self'."""
+        """Basically passing the input parameter 'username' into this instance of the class ('self.username')."""
         self.username = username
         self.followers = 0
         """Set an initial default value, which then means we don't need to initialise it in the 'init'."""
