@@ -3,7 +3,6 @@ import tkinter
 import random
 
 tim = t.Turtle()
-# screen = Screen()
 
 t.colormode(255)
 
@@ -18,30 +17,17 @@ def random_colour():
 tim.shape('turtle')
 tim.color(random_colour())
 tim.speed(0)
-tim.width(15)
+tim.width(1)
 t.screensize(400, 400)
 
-# pen_colours = [
-#     "aquamarine",
-#     "dodger blue",
-#     "orange red",
-#     "dark magenta",
-#     "gold",
-#     "deep pink",
-#     "cyan",
-# ]
 
-# def draw_shape(no_of_sides):
-#     """draws the shape depending on the number of sides input."""
-#     angle = 360 / no_of_sides
-#     for _ in range(no_of_sides):
-#         tim.fd(100)
-#         tim.rt(angle)
+def draw_shape(no_of_sides):
+    """draws the shape depending on the number of sides input."""
+    angle = 360 / no_of_sides
+    for _ in range(no_of_sides):
+        tim.fd(100)
+        tim.rt(angle)
     
-# for no_of_sides in range(3, 15):
-#     tim.pencolor(random.choice(pen_colours))
-#     draw_shape(no_of_sides)
-
 
 angles = [0, 90, 180, 270]
 
@@ -53,13 +39,27 @@ def random_walk(no_of_steps):
         tim.fd(30)
         tim.setheading(angle)
         tim.pencolor(random_colour())
-    
-    
-random_walk(200)
 
 
-def spirograph():
-    pass
+def spirograph(loops):
+    """Draw a spirograph-like circle."""
+    for _ in range(loops):
+        tim.circle(150)
+        tim.lt(360 / loops)
+        tim.pencolor(random_colour())
 
-# screen = Screen()
-# screen.exitonclick()
+
+# ### run the spirograph -
+# spirograph(100)       # pass in the number of loops
+
+# ### run the shape generator -
+# for no_of_sides in range(3, 15):      # pass in the min & max no. of sides
+#     tim.color(random_colour())
+#     draw_shape(no_of_sides)
+
+### run the random walk -
+random_walk(200)        # pass in the number of steps
+
+
+screen = t.Screen()
+screen.exitonclick()
