@@ -1,64 +1,40 @@
+# import colorgram
+
+# rgb_colours = []
+# # use colorgram to extract the most frequent colours from the input image, number indicates how many....
+# colours = colorgram.extract('100Days\day18_turtle\image.jpg', 30)
+# for colour in colours:
+#     r = colour.rgb.r
+#     g = colour.rgb.g
+#     b = colour.rgb.b
+#     new_colour = (r,g,b)
+#     # then add each extracted colour to the list as an rgb...
+#     rgb_colours.append(new_colour)
+
+# print(rgb_colours)
+
 import turtle as t
-import tkinter
 import random
 
-tim = t.Turtle()
+colour_list = [
+    (202, 164, 110), (149, 75, 50), (222, 201, 136), (53, 93, 123), 
+(170, 154, 41), (138, 31, 20), (134, 163, 184), (197, 92, 73), (47, 121, 86), (73, 43, 35), (145, 178, 149), (14, 98, 70), 
+(232, 176, 165), (160, 142, 158), (54, 45, 50), (101, 75, 77), (183, 205, 171), (36, 60, 74), (19, 86, 89), (82, 148, 129), 
+(147, 17, 19), (27, 68, 102), (12, 70, 64), (107, 127, 153), (176, 192, 208), (168, 99, 102)
+]
 
+tim = t.Turtle()
 t.colormode(255)
 
-def random_colour():
-    """Generates a tuple to plug into the r,g,b space."""
-    r = random.randint(0,255)
-    g = random.randint(0,255)
-    b = random.randint(0,255)
-    return (r,g,b)
+def create_art(width, height):
+    for nheight in range(height):
+        for nwidth in range(width):
+            tim.dot(50, random.choice(colour_list))
+            tim.fd(100)
 
-
-tim.shape('turtle')
-tim.color(random_colour())
-tim.speed(0)
-tim.width(1)
-t.screensize(400, 400)
-
-
-def draw_shape(no_of_sides):
-    """draws the shape depending on the number of sides input."""
-    angle = 360 / no_of_sides
-    for _ in range(no_of_sides):
-        tim.fd(100)
-        tim.rt(angle)
-    
-
-angles = [0, 90, 180, 270]
-
-def random_walk(no_of_steps):
-    """draws a random walk depending on the number of steps input."""
-    for _ in range(no_of_steps):
-        angle = random.choice(angles)
-        # dist = random.choice(range(20, 100))
-        tim.fd(30)
-        tim.setheading(angle)
-        tim.pencolor(random_colour())
-
-
-def spirograph(loops):
-    """Draw a spirograph-like circle."""
-    for _ in range(loops):
-        tim.circle(150)
-        tim.lt(360 / loops)
-        tim.pencolor(random_colour())
-
-
-# ### run the spirograph -
-# spirograph(100)       # pass in the number of loops
-
-# ### run the shape generator -
-# for no_of_sides in range(3, 15):      # pass in the min & max no. of sides
-#     tim.color(random_colour())
-#     draw_shape(no_of_sides)
-
-### run the random walk -
-random_walk(200)        # pass in the number of steps
+tim.penup()
+tim.setpos(-400,-200)
+create_art(7,1)
 
 
 screen = t.Screen()
