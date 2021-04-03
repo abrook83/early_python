@@ -26,15 +26,25 @@ colour_list = [
 tim = t.Turtle()
 t.colormode(255)
 
+
 def create_art(width, height):
     for nheight in range(height):
         for nwidth in range(width):
-            tim.dot(50, random.choice(colour_list))
-            tim.fd(100)
+            tim.dot(20, random.choice(colour_list))
+            tim.fd(70)
+        if tim.xcor() < 0:
+            tim.rt(90)
+            tim.fd(70)
+            tim.rt(90)
+        else:
+            tim.lt(90)
+            tim.fd(70)
+            tim.lt(90)  
+
 
 tim.penup()
-tim.setpos(-400,-200)
-create_art(7,1)
+tim.setpos(-315,-315)
+create_art(10,10)
 
 
 screen = t.Screen()
