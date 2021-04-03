@@ -29,9 +29,10 @@ t.colormode(255)
 
 def create_art(width, height):
     for nheight in range(height):
-        for nwidth in range(width):
+        for nwidth in range(width - 1):
             tim.dot(20, random.choice(colour_list))
             tim.fd(70)
+        tim.dot(20, random.choice(colour_list))
         if tim.xcor() < 0:
             tim.rt(90)
             tim.fd(70)
