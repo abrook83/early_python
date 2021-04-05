@@ -1,11 +1,16 @@
 from turtle import Turtle
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DIST = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
     def __init__ (self):
         self.segments = []
         self.create_snake()
+        self.snake_head = self.segments[0]
 
 
     def create_snake(self):
@@ -27,20 +32,24 @@ class Snake:
             new_x = self.segments[segment_number - 1].xcor()            # takes the next in line square's coordinates....
             new_y = self.segments[segment_number - 1].ycor()
             self.segments[segment_number].goto(new_x, new_y)            # plugs those acquired coordinates into the current square
-        self.segments[0].fd(MOVE_DIST)          # lastly, move the first square forward to begin the process again.
+        self.snake_head.fd(MOVE_DIST)          # lastly, move the first square forward to begin the process again.
 
 
     def up(self):
-        self.segments[0].seth(90)
+        if self.snake_head.heading() != DOWN:
+            self.snake_head.seth(UP)
 
 
     def down(self):
-        self.segments[0].seth(270)
+        if self.snake_head.heading() != UP:
+            self.snake_head.seth(DOWN)
 
 
     def left(self):
-        self.segments[0].seth(180)
+        if self.snake_head.heading() != RIGHT:
+            self.snake_head.seth(LEFT)
 
 
     def right(self):
-        self.segments[0].seth(0)
+        if self.snake_head.heading() != LEFT:
+            self.snake_head.seth(RIGHT)
