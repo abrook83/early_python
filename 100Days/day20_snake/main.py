@@ -5,7 +5,7 @@ from score import Score
 import time
 
 screen = Screen()
-screen.screensize(600, 600)         # set screen size
+screen.setup(width=600, height=600)         # set screen size
 screen.bgcolor("darkblue")
 screen.title("Snaaaaaake!!!")
 screen.tracer(0)        # setting tracer to 0 turns live turtle animations off, so the screen can be updated as determined
@@ -30,11 +30,19 @@ while game_on:
     if snake.snake_head.distance(food) < 15:
         food.refresh_food()
         score.update_score()
+        snake.extend()
 
     # detect a collision with a wall
     if snake.snake_head.xcor() > 300 or snake.snake_head.xcor() < -300 or snake.snake_head.ycor() > 300 or snake.snake_head.ycor() < -300:
         game_on = False
         score.game_over()
 
+    # detect a collision with the snake's tail
+    for segment in snake.segments:
+        if segment == snake.snake_head:
+            pass
+        elif snake.snake_head.distance(segment) < 10:
+            game_on = False
+            score.game_over()
 
 screen.exitonclick()
