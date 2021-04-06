@@ -20,6 +20,11 @@ class Score(Turtle):
         self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
 
 
+    def game_over(self):
+        self.goto(0,0)
+        self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+
+
     def update_score(self):
         """Increase the score once food is eaten"""
         self.score += 10
