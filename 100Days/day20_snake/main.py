@@ -20,8 +20,6 @@ screen.onkey(key="Down", fun=snake.down)
 screen.onkey(key="Left", fun=snake.left)
 screen.onkey(key="Right", fun=snake.right)
 
-game_score = 0
-
 game_on = True
 while game_on:
     screen.update()        # as tracer is off, screen is updated within this function, with below delay of 0.1 seconds added.
@@ -32,5 +30,10 @@ while game_on:
     if snake.snake_head.distance(food) < 15:
         food.refresh_food()
         score.update_score()
+
+    # detect a collision with a wall
+    if snake.snake_head.xcor() > 300 or snake.snake_head.xcor() < -300 or snake.snake_head.ycor() > 300 or snake.snake_head.ycor() > -300:
+        game_on = False
+        
 
 screen.exitonclick()
