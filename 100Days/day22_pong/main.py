@@ -17,8 +17,6 @@ r_paddle = Paddle((350, 0))
 ball = Ball()
 scores = Scores()
 
-# print(ball.shapesize())
-
 screen.listen()
 screen.onkey(key="Up", fun=r_paddle.go_up)
 screen.onkey(key="Down", fun=r_paddle.go_dn)
@@ -28,7 +26,7 @@ screen.onkey(key="s", fun=l_paddle.go_dn)
 game_on = True
 
 while game_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()     # now paddle is created, updates screen to update animation
     ball.move()
     if ball.ycor() > 280 or ball.ycor() < -280:

@@ -13,6 +13,7 @@ class Ball(Turtle):
         self.penup()
         self.x_move = 10        # variables to determine the ball's movin distance
         self.y_move = 10
+        self.move_speed = 0.1
 
 
     def move(self):
@@ -30,8 +31,10 @@ class Ball(Turtle):
 
     def paddle_hit(self):
         self.x_move *= -1
+        self.move_speed *= 0.9
 
 
     def reset_position(self):
+        self.move_speed = 0.1
         self.goto(0,0)
         self.paddle_hit()
