@@ -2,9 +2,9 @@ from turtle import Turtle, Screen
 import random
 import time
 from paddle import Paddle
+from ball import Ball
 
 screen  = Screen()
-# paddle = Paddle()
 
 screen.setup(width=800,height=600)
 screen.bgcolor("black")
@@ -13,6 +13,9 @@ screen.tracer(0)        # setting to '0' turns off animation while paddle is cre
 
 l_paddle = Paddle((-350, 0))
 r_paddle = Paddle((350, 0))
+ball = Ball()      # need to pass in coordinates as one input argument, hence the double brackets
+
+# print(ball.shapesize())
 
 screen.listen()
 screen.onkey(key="Up", fun=r_paddle.go_up)
@@ -23,6 +26,9 @@ screen.onkey(key="s", fun=l_paddle.go_dn)
 game_on = True
 
 while game_on:
+    time.sleep(0.03)
     screen.update()     # now paddle is created, updates screen to update animation
+    ball.move()
+    ball.wall_collision()
 
 screen.exitonclick()
