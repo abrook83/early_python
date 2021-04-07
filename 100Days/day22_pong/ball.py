@@ -10,16 +10,15 @@ class Ball(Turtle):
         self.turtlesize(1,1)
         self.color("white")
         self.penup()
+        self.x_move = 10
+        self.y_move = 10
 
 
     def move(self):
-        new_x = self.xcor() + 10
-        new_y = self.ycor() + 10
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
 
 
-    def wall_collision(self):
-        new_heading = -(self.heading())
-        y_coord = self.ycor()
-        if y_coord > 300 or y_coord < -300:
-            self.heading(new_heading)
+    def bounce(self):
+        self.y_move *= -1
