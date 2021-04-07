@@ -26,3 +26,12 @@ class Ball(Turtle):
     def bounce(self):
         """To bounce, will nultiply the y coord by -1 to make the ball turn 180deg the opposite direction."""
         self.y_move *= -1
+
+
+    def paddle_hit(self):
+        self.x_move *= -1
+
+
+    def reset_position(self):
+        self.goto(0,0)
+        self.paddle_hit()
