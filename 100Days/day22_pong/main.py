@@ -18,10 +18,10 @@ ball = Ball()
 scores = Scores()
 
 screen.listen()
-screen.onkey(key="Up", fun=r_paddle.go_up)
-screen.onkey(key="Down", fun=r_paddle.go_dn)
-screen.onkey(key="w", fun=l_paddle.go_up)
-screen.onkey(key="s", fun=l_paddle.go_dn)
+screen.onkeypress(key="Up", fun=r_paddle.go_up)
+screen.onkeypress(key="Down", fun=r_paddle.go_dn)
+screen.onkeypress(key="w", fun=l_paddle.go_up)
+screen.onkeypress(key="s", fun=l_paddle.go_dn)
 
 game_on = True
 
