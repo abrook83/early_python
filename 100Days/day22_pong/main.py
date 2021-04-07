@@ -29,7 +29,7 @@ while game_on:
     time.sleep(0.03)
     screen.update()     # now paddle is created, updates screen to update animation
     ball.move()
-    if ball.ycor() > 300 or ball.ycor() < -300:
+    if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce()
 
 
