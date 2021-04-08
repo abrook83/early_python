@@ -37,7 +37,7 @@ class Ball(Turtle):
 
 
     def reset_position(self):
-        """Reset the ball once it's goe out of bounds - resets the original speed, places the ball
+        """Reset the ball once it's gone out of bounds - resets the original speed, places the ball
         in the middle, and sends it the opposite way it has heading."""
         self.move_speed = 0.1
         self.goto(0,0)
