@@ -14,7 +14,7 @@ class Paddle(Turtle):
 
 
     def go_up(self):
-        """Both 'go_up' & 'go_dn' move the paddle when told to (input from keyboard in 'main'."""
+        """Both 'go_up' & 'go_dn' move the paddle when told to (input from keyboard in 'main')."""
         new_y = self.ycor() + 20
         self.goto(self.xcor(), new_y)
 
