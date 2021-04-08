@@ -25,4 +25,3 @@ class Player(Turtle):
         """Reset the turtle once it's reached the top of screen - resets the original speed, places the ball
         in the middle, and sends it the opposite way it has heading."""
         self.goto(STARTING_POSITION)
-
