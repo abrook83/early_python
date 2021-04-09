@@ -7,15 +7,19 @@
 
 # open the names list
 with open("100Days\day25_mailmerge\Mail Merge Project Start\Input/Names\invited_names.txt") as name_list:
-    # for each of the names in the list...
+    # creates a list of the names....
     names = name_list.readlines()
     
 with open("100Days\day25_mailmerge\Mail Merge Project Start\Input\Letters\starting_letter.txt") as template:
+    # the file is open, but must be read...
     letter = template.read()
+    # loop through the names list
     for name in names:
+        # strip the newlines from each name
         new_name = name.strip()     # can't strip this within the replace method....?
+        # create new text, replacing the [name] space with the name currently held...
         new_letter = letter.replace("[name]", new_name)
-        # save the new file in the output folder...
+        # save the new text as a file in the output folder...
         with open(f"100Days/day25_mailmerge/Mail Merge Project Start/Output/ReadyToSend/letter to {new_name}.txt", mode='w') as letter_to:
             letter_to.write(new_letter)
 
