@@ -20,8 +20,6 @@ class Score(Turtle):
     def update_scoreboard(self):
         """Updates the scoreboard every time the score changes."""
         self.clear()
-        # with open("100Days\day24_snakeupdated/data.txt", mode='r') as file:
-        #     highscore = file.read()
         self.write(f"Score: {self.score}   High Score: {self.highscore}", align=ALIGNMENT, font=FONT)
 
 
