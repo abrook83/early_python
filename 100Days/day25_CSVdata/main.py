@@ -1,50 +1,16 @@
-# with open("100Days\day25_CSVdata\weather_data.csv") as weather_data:
-#     data = weather_data.readlines()
-
-# print(data)
-
-import csv
 import pandas
 
-# with open("100Days\day25_CSVdata\weather_data.csv") as weather_data:
-#     data = csv.reader(weather_data)
-#     temperatures = []
-#     for row in data:
-#         if row[1] != "temp":
-#             temperatures.append(int(row[1]))
+squirrel_data = pandas.read_csv("100Days\day25_CSVdata/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
 
-#     print(temperatures)
+# print(len(squirrel_data["Primary Fur Color"]))
+gray_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+cinnamon_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+black_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
 
-### Now do the same using pandas.... ###
+data_dict = {
+    "Fur Color": ["Gray", "Cinnamon", "Black"],
+    "Color Count": [gray_count, cinnamon_count, black_count]
+}
 
-data = pandas.read_csv("100Days\day25_CSVdata\weather_data.csv")
-# print(type(data))       # the whole data set is a 'dataframe'
-# print(type(data["temp"]))   # the column is a 'series'
-
-""" table = dataframe, column = series """
-
-data_dict = data.to_dict()
-print(data_dict)
-
-""""Pandas takes the first value as the name of a column's values, hence is addressable via this first value."""
-
-# temp_list = data["temp"].to_list()
-# print(temp_list)
-
-# print(data["temp"].max())
-
-# Get data from columns - 
-"""Both below lines produce the same output, values callable by their first value."""
-# print(data["condition"])
-# print(data.condition)
-
-# Get data from rows -
-"""From the dataframe 'data', removes the data string where the temp is the maximum.
-'data' is the dataframe
-'data.temp' in the column
-'data.temp.max()' is the value"""
-print(data[data.temp == data.temp.max()])
-
-monday = data[data.day =="Monday"]
-mon_temp = int(monday.temp)
-print((mon_temp * 1.8) + 32)
+dframe = pandas.DataFrame(data_dict)
+dframe.to_csv("100Days\day25_CSVdata\Squirrel Color Count.csv")
