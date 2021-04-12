@@ -28,16 +28,27 @@
 
 # print(squared_nums)
 
-"""Exercise 2"""
+# """Exercise 2"""
 
-numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-# 🚨 Do Not Change the code above
+# numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+# # 🚨 Do Not Change the code above
 
-#Write your 1 line code 👇 below:
+# #Write your 1 line code 👇 below:
 
-result = [num for num in numbers if num % 2 == 0]
+# result = [num for num in numbers if num % 2 == 0]
 
-#Write your code 👆 above:
+# #Write your code 👆 above:
+
+# print(result)
+
+"""Exercise 3"""
+
+with open("100Days\day26_listcomprehension/file1.txt") as f1:
+    nums1 = f1.readlines()
+
+with open("100Days\day26_listcomprehension/file2.txt") as f2:
+    nums2 = f2.readlines()
+
+result = [int(num) for num in nums1 if num in nums2]
 
 print(result)
-
