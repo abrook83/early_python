@@ -42,14 +42,8 @@ while game_on:
                 else:
                     break
 
-for state in data.state:
-    """Compare the list of correct guesses to the list of answers."""
-    if not state in correct_guesses:
-        """If an answer is not in the list, add it to the list 'to_learn'."""
-        states_to_learn.append(state)
+states_to_learn = [state for state in data.state if state not in correct_guesses]
 
-print(f"You missed {correct_count}!")
-print("States to learn:\n")
 """Create a new variable from the list of states to learn."""
 new_data = pandas.DataFrame(states_to_learn)
 """Send that data list to a new .csv."""
