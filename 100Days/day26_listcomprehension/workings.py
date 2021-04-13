@@ -56,18 +56,33 @@
 
 """ Dictionary comprehension """
 
-names = ['Nick', 'Gerald', 'Steve', 'Gene', 'Peter', 'Harold']
-# scores = ['90', '87', '75', '95', '80', '78']
+# names = ['Nick', 'Gerald', 'Steve', 'Gene', 'Peter', 'Harold']
+# # scores = ['90', '87', '75', '95', '80', '78']
 
-import random
+# import random
 
-#  student_scores = {new_key:new_value for item in list}
-student_scores = {student:random.randint(1,100) for student in names}
-print(f"All scores: {student_scores}")
+# #  student_scores = {new_key:new_value for item in list}
+# student_scores = {student:random.randint(1,100) for student in names}
+# print(f"All scores: {student_scores}")
 
-passed_students = {student:score for (student, score) in student_scores.items() if score > 80}
-print(f"Passed: {passed_students}")
+# passed_students = {student:score for (student, score) in student_scores.items() if score > 80}
+# print(f"Passed: {passed_students}")
 
 
 """ Exercise 4 """
+### Count the letters of each word in the sentence ###
+
+sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
+# Don't change code above 👆
+
+# Write your code below:
+
+words = sentence.split()        # creates a list of words in the sentence
+result = {word:len(word) for word in words}     # create the new dictionary with each word and the length of each word
+
+### OR ###
+result = {word:len(word) for word in sentence.split()}
+
+print(result)
+
 
