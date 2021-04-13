@@ -15,7 +15,7 @@
 # capit_names = [name.upper() for name in names if len(name) > 5]
 # print(capit_names)
 
-# """Exercise 1"""
+"""Exercise 1"""
 
 # numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 # # 🚨 Do Not Change the code above 👆
@@ -28,7 +28,7 @@
 
 # print(squared_nums)
 
-# """Exercise 2"""
+"""Exercise 2"""
 
 # numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 # # 🚨 Do Not Change the code above
@@ -42,13 +42,32 @@
 # print(result)
 
 """Exercise 3"""
+### loops through and compares 2 lists for common variables ###
 
-with open("100Days\day26_listcomprehension/file1.txt") as f1:
-    nums1 = f1.readlines()
+# with open("100Days\day26_listcomprehension/file1.txt") as f1:
+#     nums1 = f1.readlines()
 
-with open("100Days\day26_listcomprehension/file2.txt") as f2:
-    nums2 = f2.readlines()
+# with open("100Days\day26_listcomprehension/file2.txt") as f2:
+#     nums2 = f2.readlines()
 
-result = [int(num) for num in nums1 if num in nums2]
+# result = [int(num) for num in nums1 if num in nums2]
 
-print(result)
+# print(result)
+
+""" Dictionary comprehension """
+
+names = ['Nick', 'Gerald', 'Steve', 'Gene', 'Peter', 'Harold']
+# scores = ['90', '87', '75', '95', '80', '78']
+
+import random
+
+#  student_scores = {new_key:new_value for item in list}
+student_scores = {student:random.randint(1,100) for student in names}
+print(f"All scores: {student_scores}")
+
+passed_students = {student:score for (student, score) in student_scores.items() if score > 80}
+print(f"Passed: {passed_students}")
+
+
+""" Exercise 4 """
+
