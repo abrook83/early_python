@@ -7,7 +7,7 @@ window.title("My first GUI program")
 window.minsize(800,800)
 
 # create a label -
-label = tkinter.Label(text="I'm a motherfucking label", font=("Arial", 22, "italic"))
+label = tkinter.Label(text="It's ya boy Label!", font=("Arial", 22, "italic"))
 # display the label (call the packer) -
 label.pack(side="left")     # parameters to convey display instructions
 
