@@ -16,13 +16,14 @@ window = tkinter.Tk()
 window.title("My first GUI program")
 # set the minimum window size -
 window.minsize(800,800)
+window.config(pady=20, padx=20)     # adds padding to the window's borders
 
 """# create a label"""
 label = tkinter.Label(text="It's ya boy Label!", font=("Arial", 22, "italic"))
 # change the text in a label by calling it like a dictionary -
 label["text"] = "New Text"
 # OR, pass in the text as a key=word argument -
-label.config(text="New Text")
+label.config(text="New Text", pady=10, padx=10)
 # display the label (call the packer) -
 label.pack(side="top")     # parameters to convey display instructions
 # Use placement methods (pack, place...) at the end of each widget's code
