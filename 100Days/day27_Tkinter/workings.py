@@ -24,16 +24,16 @@ label["text"] = "New Text"
 # OR, pass in the text as a key=word argument -
 label.config(text="New Text")
 # display the label (call the packer) -
-label.grid(column=0, row=0)     # parameters to convey display instructions
+label.pack(side="top")     # parameters to convey display instructions
 # Use placement methods (pack, place...) at the end of each widget's code
 
 """# create a button"""
 button = tkinter.Button(text="Click here", command=button_click)        # pass in the name of a function, rather than call it, so no '()' required.
-button.grid(column=1, row=1)      # enter coordinates for where to place each widget
+button.place(x=100, y=200)      # enter coordinates for where to place each widget
 
 """# text entry"""
 input = tkinter.Entry(width=10)     # Entry class from tkinter
-input.grid(column=2, row=2)
+input.pack()
 
 
 """Kept at the end of ALL code, keeps the mainloop running and the window open"""
