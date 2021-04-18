@@ -15,7 +15,6 @@ LONG_BREAK_MIN = 20
 def reset_button_click():
     pass
 
-
 # # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_button_click():
@@ -49,13 +48,13 @@ timer_label.grid(column=1, row=0)     # parameters to convey display instruction
 # timer_label.config(pady=5)
 
 """# create the start button"""
-start_button = Button(text="start", command=start_button_click)        # pass in the name of a function, rather than call it, so no '()' required.
-start_button.grid(column=0, row=2)     # enter coordinates for where to place each widget
+start_button = Button(text="start", fg=RED, font=(FONT_NAME, 12, "bold"), command=start_button_click, highlightthickness=0)
+start_button.grid(column=0, row=2)     # enter grid coordinates for where to place each widget
 # start_button.config(pady=5, padx=5)
 
 """# create the reset button"""
-reset_button = Button(text="reset", command=reset_button_click)        # pass in the name of a function, rather than call it, so no '()' required.
-reset_button.grid(column=2, row=2)     # enter coordinates for where to place each widget
+reset_button = Button(text="reset", fg=RED, font=(FONT_NAME, 12, "bold"), command=reset_button_click, highlightthickness=0)
+reset_button.grid(column=2, row=2)     # enter grid coordinates for where to place each widget
 # reset_button.config(pady=5, padx=5)
 
 window.mainloop()
