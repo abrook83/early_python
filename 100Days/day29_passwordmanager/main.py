@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import random
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -7,32 +8,33 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     pword_chars = []
-    for letter in range(6):
-        pword_chars.append(random.choice(letters))
-
-    for symb in range(2):
-        pword_chars.append(random.choice(symbols))
-
-    for num in range(2):
-        pword_chars.append(random.choice(numbers))
-
+    # add a number of characters from each list into the characters list -
+    [pword_chars.append(random.choice(letters)) for letter in range(6)]
+    [pword_chars.append(random.choice(symbols)) for symb in range(2)]
+    [pword_chars.append(random.choice(numbers)) for num in range(2)]
+    # shuffle the list -    
     random.shuffle(pword_chars)
-    pword = ""
-    for char in pword_chars:
-        pword += char
-    
+    # 'join' method adds the shuffled letters into a new string -
+    pword = "".join(pword_chars)
+    print(pword)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_entry():
     site = website_entry.get()  # get the entered text as the name of the site
     uname = uname_entry.get()   # ...as above
     password = password_entry.get()   # ...as above
-    data_entry = f"{site} | {uname} | {password}\n"
-    with open(f"100Days\day29_passwordmanager/password_data.txt", mode='a') as password_data:
-        password_data.write(data_entry)
-    website_entry.delete(0,END)
-    uname_entry.delete(0,END)
-    password_entry.delete(0,END)
+    if len(site) < 1 or len(uname) < 1 or len(password) < 1:
+        messagebox.showwarning(title="Fields empty", message="Some of your fields are empty...")
+    else:
+        check = messagebox.askokcancel(title="Proceed?", message=f"Are these details correct?\nWebsite: {site}\nUsername: {uname}\nPassword: {password}")
+        if check:
+            data_entry = f"{site} | {uname} | {password}\n"
+            with open(f"100Days\day29_passwordmanager/password_data.txt", mode='a') as password_data:
+                password_data.write(data_entry)
+                
+            website_entry.delete(0,END)
+            uname_entry.delete(0,END)
+            password_entry.delete(0,END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
