@@ -9,8 +9,9 @@ def add_entry():
     site = website_entry.get()
     uname = uname_entry.get()
     password = password_entry.get()
-    data_entry = f"{site} | {uname} | {password}"
-    print(data_entry)
+    data_entry = f"{site} | {uname} | {password}\n"
+    with open(f"100Days\day29_passwordmanager/password_data.txt", mode='a') as password_data:
+        password_data.write(data_entry)
     website_entry.delete(0,END)
     uname_entry.delete(0,END)
     password_entry.delete(0,END)
