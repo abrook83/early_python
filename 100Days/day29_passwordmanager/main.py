@@ -16,7 +16,9 @@ def generate_password():
     random.shuffle(pword_chars)
     # 'join' method adds the shuffled letters into a new string -
     pword = "".join(pword_chars)
-    print(pword)
+    # insert the generated password into the password textbox -
+    password_entry.insert(0, pword)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_entry():
