@@ -1,14 +1,32 @@
 from tkinter import *
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
-    pass
+    pword_chars = []
+    for letter in range(6):
+        pword_chars.append(random.choice(letters))
+
+    for symb in range(2):
+        pword_chars.append(random.choice(symbols))
+
+    for num in range(2):
+        pword_chars.append(random.choice(numbers))
+
+    random.shuffle(pword_chars)
+    pword = ""
+    for char in pword_chars:
+        pword += char
+    
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_entry():
-    site = website_entry.get()
-    uname = uname_entry.get()
-    password = password_entry.get()
+    site = website_entry.get()  # get the entered text as the name of the site
+    uname = uname_entry.get()   # ...as above
+    password = password_entry.get()   # ...as above
     data_entry = f"{site} | {uname} | {password}\n"
     with open(f"100Days\day29_passwordmanager/password_data.txt", mode='a') as password_data:
         password_data.write(data_entry)
