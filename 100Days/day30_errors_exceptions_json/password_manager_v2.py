@@ -30,13 +30,37 @@ def add_entry():
     site = website_entry.get()  # get the entered text as the name of the site
     uname = uname_entry.get()   # ...as above
     password = password_entry.get()   # ...as above
-    new_entry = {site: {uname : password}}
+    new_entry = {
+        site: {
+        "Username": uname,
+        "Password" : password,
+        }
+    }
 
     if len(site) < 1 or len(uname) < 1 or len(password) < 1:
         messagebox.showwarning(title="Fields empty", message="Some of your fields are empty...")
     else:
-        with open(f"100Days\day30_errors_exceptions_json/password_data.json", mode='w') as password_data:
-            json.dump(new_entry, password_data)
+        try:
+            """Open the existing file -"""
+            with open(f"100Days\day30_errors_exceptions_json/password_data.json", 'r') as password_data:
+                # read the existing data -
+                data = json.load(password_data)
+
+        except FileNotFoundError:
+            """If the file doesn't exist -"""
+            with open(f"100Days\day30_errors_exceptions_json/password_data.json", 'w') as password_data:
+                json.dump(new_entry, password_data, indent=4)   # indent adds formatting to the json data
+
+        else:
+            """Then update the file -"""
+            data.update(new_entry)
+
+            with open(f"100Days\day30_errors_exceptions_json/password_data.json", 'w') as password_data:
+                # save the updated data -
+                json.dump(data, password_data, indent=4)   # indent adds formatting to the json data
+        
+        finally:    
+            """Delete the field entries -"""
             website_entry.delete(0,END)
             # uname_entry.delete(0,END)
             password_entry.delete(0,END)
