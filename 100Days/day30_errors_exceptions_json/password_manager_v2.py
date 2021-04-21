@@ -65,6 +65,10 @@ def add_entry():
             # uname_entry.delete(0,END)
             password_entry.delete(0,END)
 
+
+def search_entry():
+    pass
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 """Create the app's window..."""
@@ -96,8 +100,8 @@ password_label = Label(text="Password:", fg="black", bg="white", font=("Arial", 
 password_label.grid(column=0, row=3, padx=2, pady=2)     # parameters to convey display instructions
 
 """create the website entry box"""
-website_entry = Entry(width=54)
-website_entry.grid(column=1, row=1, columnspan=2, padx=2, pady=2)
+website_entry = Entry(width=32)
+website_entry.grid(column=1, row=1, padx=2, pady=2)
 website_entry.focus()
 
 """create the username entry box"""
@@ -108,6 +112,10 @@ uname_entry.insert(0, "aaronbrook83@gmail.com")
 """create the password entry box"""
 password_entry = Entry(width=32)
 password_entry.grid(column=1, row=3, padx=2, pady=2)
+
+"""create the search button"""
+password_gen_button = Button(text="Search", fg="black", font=("arial", 10, "normal"), command=search_entry, highlightthickness=0, width=15)
+password_gen_button.grid(column=2, row=1, pady=2)     # enter grid coordinates for where to place each widget
 
 """create the password generator button"""
 password_gen_button = Button(text="Generate Password", fg="black", font=("arial", 10, "normal"), command=generate_password, highlightthickness=0, width=15)
