@@ -1,4 +1,5 @@
 # ------------------------- PASSWORD MANAGER APP V2 ---------------------------- #
+
 from tkinter import *
 from tkinter import messagebox
 import random
@@ -10,7 +11,9 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+
 def generate_password():
+    password_entry.delete(0,END)
     pword_chars = []
     # add a number of characters from each list into the characters list -
     [pword_chars.append(random.choice(letters)) for letter in range(6)]
@@ -26,6 +29,7 @@ def generate_password():
     pyperclip.copy(pword)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
 def add_entry():
     site = website_entry.get()  # get the entered text as the name of the site
     uname = uname_entry.get()   # ...as above
@@ -65,9 +69,28 @@ def add_entry():
             # uname_entry.delete(0,END)
             password_entry.delete(0,END)
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
 
-def search_entry():
-    pass
+def find_password():
+    site = website_entry.get()
+    try:
+        with open(f"100Days\day30_errors_exceptions_json/password_data.json", 'r') as password_data:
+            # read the existing data -
+            data = json.load(password_data)
+
+    except FileNotFoundError:
+        messagebox.showerror(title="File error", message="No data file found")
+    
+    else:
+        if site in data:
+            password = data[site]["Password"]
+            uname = data[site]["Username"]
+            messagebox.showinfo(title=site, message=f"Username: {uname}\nPassword: {password}")
+        else:
+            messagebox.showerror(title="Password details", message="No data found")
+
+    finally:
+        website_entry.delete(0,END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -114,7 +137,7 @@ password_entry = Entry(width=32)
 password_entry.grid(column=1, row=3, padx=2, pady=2)
 
 """create the search button"""
-password_gen_button = Button(text="Search", fg="black", font=("arial", 10, "normal"), command=search_entry, highlightthickness=0, width=15)
+password_gen_button = Button(text="Search", fg="black", font=("arial", 10, "normal"), command=find_password, highlightthickness=0, width=15)
 password_gen_button.grid(column=2, row=1, pady=2)     # enter grid coordinates for where to place each widget
 
 """create the password generator button"""
