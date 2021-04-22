@@ -8,11 +8,20 @@ LAST_WORD = 100
 
 # -------------------------- SELECT WORDS------------------------------ #
 
-data = pandas.read_csv("100Days\day31_flashcards\data\german_words.csv")
-to_learn = data.to_dict(orient="records")       # add to select from range of words....
 current_card = {}
+to_learn = {}
+
+try:
+    data = pandas.read_csv("100Days\day31_flashcards\data\words_to_learn.csv")
+except FileNotFoundError:
+    original_data = pandas.read_csv("100Days\day31_flashcards\data\german_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")       # add code to select from range of words....
+
 
 def next_card():
+    """Goes to the next card when prompted."""
     global current_card, flip_timer
     window.after_cancel(flip_timer)
     current_card = random.choice(to_learn)
@@ -21,10 +30,20 @@ def next_card():
     canvas.itemconfig(card_bg, image=front_image)
     flip_timer = window.after(3000, func=flip_card)
 
+
 def flip_card():
+    """Flip a card (change the look to white on green) after the 3sec timer."""
     canvas.itemconfig(title_text, text="English", fill="white")
     canvas.itemconfig(word_text, text=current_card["English"], fill="white")
     canvas.itemconfig(card_bg, image=back_image)
+
+
+def word_known():
+    """If a word is known (ticked), then remove it from the dataframe."""
+    to_learn.remove(current_card)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("100Days\day31_flashcards\data/words_to_learn.csv", index=False)    # 'index=False' removes the indexing of entries when adding to .csv
+    next_card()     # after removing the known word, then move to next card.
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -43,7 +62,7 @@ canvas.grid(column=0, row=0, columnspan=2, padx=5, pady=5)
 
 """# create the 'right' mark label"""
 right_image = PhotoImage(file="100Days\day31_flashcards\images/right.png")
-right_button = Button(image=right_image, width=100, height=100, bg=BACKGROUND_COLOUR, command=next_card, highlightthickness=0)
+right_button = Button(image=right_image, width=100, height=100, bg=BACKGROUND_COLOUR, command=word_known, highlightthickness=0)
 right_button.grid(column=0, row=1)
 
 """# create the 'wrong' mark label"""
