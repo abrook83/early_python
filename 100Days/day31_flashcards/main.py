@@ -17,7 +17,7 @@ except FileNotFoundError:
     original_data = pandas.read_csv("100Days\day31_flashcards\data\german_words.csv")
     to_learn = original_data.to_dict(orient="records")
 else:
-    to_learn = data.to_dict(orient="records")       # add code to select from range of words....
+    to_learn = data.to_dict(orient="records")       # add code to select from a range of words in the list....
 
 
 def next_card():
