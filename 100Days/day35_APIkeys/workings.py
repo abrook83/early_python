@@ -1,14 +1,17 @@
 import requests
 from datetime import date, datetime
 
-lat = 25.074972
-lon = 55.144453
-API_key = "293d14183fd04a680f4133160d9cc149"
+endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 
-response = requests.get(f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=&appid={API_key}")
-response.raise_for_status()
+weather_params = {
+    'lat': 25.074972,
+    'lon': 55.144453,
+    'appid': "293d14183fd04a680f4133160d9cc149",
+}
 
-print(response)
+response = requests.get(endpoint, params=weather_params)
+
+print(response.status_code)
 data = response.json()
 print(data)
 # sunrise = data["results"]["sunrise"].split("T")[1].split(":")[0]
