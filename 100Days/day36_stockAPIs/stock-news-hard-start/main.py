@@ -1,16 +1,34 @@
+import requests
+from datetime import date, timedelta
+
+today = date.today().strftime('%Y-%m-%d')
+yesterday = (date.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+print(today)
+print(yesterday)
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
+stock_params = {
+    "function": "TIME_SERIES_DAILY",
+    "symbol": "TSLA",
+    "interval": "60min",    
+    "apikey": "0I9TRC6RIK0LK6US",
+    }
 
 ## STEP 1: Use https://newsapi.org/docs/endpoints/everything
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 #HINT 1: Get the closing price for yesterday and the day before yesterday. Find the positive difference between the two prices. e.g. 40 - 20 = -20, but the positive difference is 20.
 #HINT 2: Work out the value of 5% of yerstday's closing stock price. 
 
-
+response = requests.get(STOCK_ENDPOINT, params=stock_params)
+response.raise_for_status()
+data = response.json()
+end_price = data["Time Series (Daily)"][str(yesterday)]["4. close"]
+print(f"Yesterday's closing price: {end_price}")
+# print(data)
 
 ## STEP 2: Use https://newsapi.org/docs/endpoints/everything
 # Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME. 
