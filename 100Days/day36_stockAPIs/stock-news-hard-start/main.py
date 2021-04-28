@@ -1,10 +1,11 @@
 import requests
 from datetime import date, timedelta
 
+"""Get the previous few days' datetime"""
 today = date.today().strftime('%Y-%m-%d')
 yesterday = (date.today() - timedelta(days=1)).strftime('%Y-%m-%d')
-print(today)
-print(yesterday)
+day_before = (date.today() - timedelta(days=2)).strftime('%Y-%m-%d')
+
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
@@ -26,8 +27,11 @@ stock_params = {
 response = requests.get(STOCK_ENDPOINT, params=stock_params)
 response.raise_for_status()
 data = response.json()
-end_price = data["Time Series (Daily)"][str(yesterday)]["4. close"]
-print(f"Yesterday's closing price: {end_price}")
+yesterday_end_price = data["Time Series (Daily)"][str(yesterday)]["4. close"]
+print(f"Yesterday's closing price: {yesterday_end_price}")
+day_before_end_price = data["Time Series (Daily)"][str(day_before)]["4. close"]
+print(f"The day before's closing price: {day_before_end_price}")
+
 # print(data)
 
 ## STEP 2: Use https://newsapi.org/docs/endpoints/everything
