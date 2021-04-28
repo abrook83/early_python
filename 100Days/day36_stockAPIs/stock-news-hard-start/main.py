@@ -21,16 +21,27 @@ stock_params = {
 
 ## STEP 1: Use https://newsapi.org/docs/endpoints/everything
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
-#HINT 1: Get the closing price for yesterday and the day before yesterday. Find the positive difference between the two prices. e.g. 40 - 20 = -20, but the positive difference is 20.
+#HINT 1: Get the closing price for yesterday and the day before yesterday. Find the positive difference between the two prices. 
+# e.g. 40 - 20 = -20, but the positive difference is 20.
 #HINT 2: Work out the value of 5% of yerstday's closing stock price. 
 
 response = requests.get(STOCK_ENDPOINT, params=stock_params)
 response.raise_for_status()
 data = response.json()
-yesterday_end_price = data["Time Series (Daily)"][str(yesterday)]["4. close"]
+yesterday_end_price = float(data["Time Series (Daily)"][str(yesterday)]["4. close"])
 print(f"Yesterday's closing price: {yesterday_end_price}")
-day_before_end_price = data["Time Series (Daily)"][str(day_before)]["4. close"]
+day_before_end_price = float(data["Time Series (Daily)"][str(day_before)]["4. close"])
 print(f"The day before's closing price: {day_before_end_price}")
+
+price_change = yesterday_end_price - day_before_end_price
+price_change = abs(price_change)
+print(f"Difference: {price_change}")
+percent_change = (price_change / yesterday_end_price) * 100
+print(f"Percentage change: {percent_change}%")
+if price_change >= (float(yesterday_end_price) * 0.05):
+    print("Get news!")
+else:
+    print("Minor fluctuations...")
 
 # print(data)
 
