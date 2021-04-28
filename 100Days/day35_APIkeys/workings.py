@@ -1,3 +1,4 @@
+### Issues with twilio security, I'm not bothered enough to rectify... ###
 import requests
 from twilio.rest import Client
 
