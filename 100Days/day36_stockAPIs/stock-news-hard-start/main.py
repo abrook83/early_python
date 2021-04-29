@@ -35,8 +35,7 @@ day_before_end_price = float(data["Time Series (Daily)"][str(day_before)]["4. cl
 print(f"The day before's closing price: {day_before_end_price}")
 
 """Calculate the price fluctuation"""
-price_change = yesterday_end_price - day_before_end_price
-price_change = abs(price_change)    # abs changes the number to an absolute value (no '-')
+price_change = abs(yesterday_end_price - day_before_end_price)
 print(f"Difference: {round(price_change, 3)}")
 percent_change = (price_change / yesterday_end_price) * 100
 print(f"Percentage change: {round(percent_change, 3)}%")      # format to 3 decimal points
