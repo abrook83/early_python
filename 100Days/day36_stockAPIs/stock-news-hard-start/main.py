@@ -35,9 +35,9 @@ print(f"The day before's closing price: {day_before_end_price}")
 
 price_change = yesterday_end_price - day_before_end_price
 price_change = abs(price_change)    # abs changes the number to an absolute value (no '-')
-print(f"Difference: {price_change}")
+print(f"Difference: {round(price_change, 3)}")
 percent_change = (price_change / yesterday_end_price) * 100
-print(f"Percentage change: {percent_change}%")      # format the number down to fewer decimal points...
+print(f"Percentage change: {round(percent_change, 3)}%")      # format the number down to fewer decimal points...
 if percent_change >= 5:
     print("Get news!")
 else:
