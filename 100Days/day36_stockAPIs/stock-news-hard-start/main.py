@@ -17,7 +17,12 @@ stock_params = {
     "symbol": "TSLA",
     "interval": "60min",    
     "apikey": "0I9TRC6RIK0LK6US",
-    }
+}
+
+news_params = {
+    "q": "TSLA",
+    "apiKey": "0d60b23561254d3fb2a2a25a8ff6ba7f",
+}
 
 ## STEP 1: Use https://newsapi.org/docs/endpoints/everything
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -38,12 +43,18 @@ price_change = abs(price_change)    # abs changes the number to an absolute valu
 print(f"Difference: {round(price_change, 3)}")
 percent_change = (price_change / yesterday_end_price) * 100
 print(f"Percentage change: {round(percent_change, 3)}%")      # format the number down to fewer decimal points...
-if percent_change >= 5:
-    print("Get news!")
+if percent_change >= 1:
+    # print("Get news!")
+    news_response = requests.get(NEWS_ENDPOINT, params=news_params)
+    news = news_response.json()
+    for _ in range(3):
+        title = news["articles"][_]["title"]
+        desc = news["articles"][_]["description"]
+        print(f"{(_ +1)}: {title}")
+        print(f"\nDesciption: {desc}\n")
 else:
-    print("Minor fluctuations...")
+    print("Minor fluctuations, don't be greedy...")
 
-# print(data)
 
 ## STEP 2: Use https://newsapi.org/docs/endpoints/everything
 # Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME. 
