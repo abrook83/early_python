@@ -10,14 +10,15 @@ csv_file = open("DE_Words.csv", "w")
 writer = csv.writer(csv_file)
 
 # turn each line into a list split at the '-' and '~'
-for line in lines[:8]:
-    print(line)
+for line in lines:
+    # print(line)
     words = line.split('–')
-    print(words)
+    # print(words)
     en_word = words[0].split()[1].strip()#.encode('utf-8','ignore')
     de_word = words[1].split('~')[0].strip()#.encode('utf-8','ignore')
     de_plural = words[1].split('~')[1].strip()#.encode('utf-8','ignore')
     new_string = f"{en_word},{de_word},{de_plural}\n"
+    # print(new_string)
     csv_file.write(new_string)
 
 csv_file.close()
